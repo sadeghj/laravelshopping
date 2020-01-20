@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+// Route::get('/homepage',array('as'=>'admintest'),function(){
+//              return "test";
+// });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -24,5 +29,5 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
     Route::get('alluserdatatabels', 'UserController@alluserdatatabels')->name('users.alluserdatatabels');
     Route::resource('/users', 'UserController');
-    
+
  });
