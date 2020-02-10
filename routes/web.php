@@ -11,9 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/homepagesite',array('as'=>'homepage',function(){
+
+    $url= route('homepage');
+    return"<a href='$url'>test url link</a>";
+    // if($id > 10)
+    // echo "this page is home page $id";
+    // else
+    // echo "sorry";
+}));
+
+    // Route::get('alluserdatatabels', 'Admin\UserController@alluserdatatabels')->name('users.alluserdatatabels');
+    // Route::resource('/admin/users', 'Admin\UserController');
+
+
+
+// Route::get('/homesite',array('as'=>'homesitename',function(){
+
+//     $url=Route('homesitename');
+//     return "<a href='$url'>test url link</a>";
+// }));
+
+
+
 
 
 // Route::get('/homepage',array('as'=>'admintest'),function(){
@@ -21,9 +45,8 @@ Route::get('/', function () {
 // });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/', 'HomeController@index')->name('home');
+//==============================================Admin start ========================
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
@@ -31,3 +54,5 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::resource('/users', 'UserController');
 
  });
+
+ //==============================================Admin End==========================
