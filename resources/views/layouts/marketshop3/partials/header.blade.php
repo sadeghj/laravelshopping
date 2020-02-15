@@ -68,8 +68,41 @@
           </div>
           <div id="top-links" class="nav pull-right flip">
             <ul>
-              <li><a href="login.html">ورود</a></li>
-              <li><a href="register.html">ثبت نام</a></li>
+
+                {{-- <li><a href="login.html">ورود</a></li>
+                <li><a href="register.html">ثبت نام</a></li> --}}
+            </ul>
+
+            <ul >
+                <!-- Authentication Links -->
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">{{ __('ورود') }}</a>
+                    </li>
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('register') }}">{{ __('ثبت نام') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('خروج') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
             </ul>
           </div>
         </div>
@@ -157,7 +190,7 @@
         <div class="navbar-header"> <span class="visible-xs visible-sm"> منو <b></b></span></div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul class="nav navbar-nav">
-            <li><a class="home_link" title="خانه" href="index.html"><span>خانه</span></a></li>
+          <li><a class="home_link" title="خانه" href="{{route('home')}}"><span>خانه</span></a></li>
             <li class="dropdown"><a>خرید بر اساس دسته بندی</a>
               <div class="dropdown-menu">
                 <ul>

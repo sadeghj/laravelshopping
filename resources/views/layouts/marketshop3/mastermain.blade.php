@@ -47,8 +47,8 @@
   <!-- Feature Box Start-->
   @yield('featurebox')
   <!-- Feature Box End-->
-@include('layouts.marketshop3.partials.footer')
-@include('layouts.marketshop3.partials.footer-scripts')
+    @include('layouts.marketshop3.partials.footer')
+    @include('layouts.marketshop3.partials.footer-scripts')
 </div>
  </body>
 </html>
