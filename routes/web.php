@@ -51,9 +51,10 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
     Route::get('/homepage', 'HomepageController@Index')->name('homepage.index');
-    Route::get('/products/index', 'ProductController@Index')->name('products.index');
+   // Route::get('/products/index', 'ProductController@Index')->name('products.index');
     Route::get('alluserdatatabels', 'UserController@alluserdatatabels')->name('users.alluserdatatabels');
     Route::resource('/users', 'UserController');
+    Route::resource('/products', 'ProductController');
 
  });
 

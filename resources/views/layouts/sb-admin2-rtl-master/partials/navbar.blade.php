@@ -240,7 +240,7 @@
                                 <a class="active" href=""><i class="fa fa-dashboard fa-fw"></i> خانه</a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> مدیریت محصولات</a>
+                                <a href="{{route('admin.products.index')}}"><i class="fa fa-bar-chart-o fa-fw"></i> مدیریت محصولات</a>
                                     {{-- <ul class="nav nav-second-level">
                                         <li>
                                             <a href="flot.html">Flot Charts</a>
@@ -252,7 +252,7 @@
                                     <!-- /.nav-second-level -->
                                 </li>
                                 <li>
-                                    <a href="tables.html"><i class="fa fa-table fa-fw"></i> مدیریت کاربران</a>
+                                <a href="{{route('admin.users.index')}}"><i class="fa fa-table fa-fw"></i> مدیریت کاربران</a>
                                 </li>
                                 <li>
                                     <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>

@@ -15,5 +15,4 @@
 <link rel="stylesheet" type="text/css" href="css/stylesheet-rtl.css" />
 <link rel="stylesheet" type="text/css" href="css/responsive-rtl.css" />
 <link rel="stylesheet" type="text/css" href="css/stylesheet-skin3.css" />
-
 <!-- CSS Part End-->
