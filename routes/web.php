@@ -1,5 +1,6 @@
 <?php
-
+use App\User;
+use App\Roles;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,6 +45,22 @@ Route::get('/homepagesite',array('as'=>'homepage',function(){
 //              return "test";
 // });
 
+Route::get('/user/roles/attach', function () {
+
+    $user= User::find(2);
+    $role= Roles::find(2);
+        $user->Roles()->attach($role->id,['created_at'=>'2020-02-05 00:00:00']);
+
+ });
+
+//read role with user
+Route::get('/user/{id}/roleread', function ($id) {
+    $user=User::findOrFail($id);
+
+    foreach($user->roles as $role){
+        echo $role->name."<br>";
+    }
+});
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 //==============================================Admin start ========================
