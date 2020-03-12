@@ -16,9 +16,8 @@ class RolesMiddleware
      */
     public function handle($request, Closure $next)
     {
-
         if (Auth::check() && Auth::user()->isAdmin() ) {
-            //echo  "This user is Admin";
+        //    echo  "This user is Admin";
             return $next($request);
         }elseif(Auth::check()){
             //echo "This user is NOT Admin";

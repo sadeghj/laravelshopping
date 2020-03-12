@@ -237,49 +237,49 @@
                                     <!-- /input-group -->
                                 </li>
                                 <li>
-                                <a class="active" href=""><i class="fa fa-dashboard fa-fw"></i> خانه</a>
+                                <a class="active" href="{{route('admin.homepage.index')}}"><i class="fa fa-dashboard fa-fw"></i> خانه</a>
                                 </li>
                                 <li>
-                                <a href="{{route('admin.products.index')}}"><i class="fa fa-bar-chart-o fa-fw"></i> مدیریت محصولات</a>
-                                    {{-- <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="flot.html">Flot Charts</a>
-                                        </li>
-                                        <li>
-                                            <a href="morris.html">Morris.js Charts</a>
-                                        </li>
-                                    </ul> --}}
+                                <a href="{{route('admin.products.index')}}"><i class="fa fa-bar-chart-o fa-fw"></i> مدیریت محصولات<span class="fa arrow"></a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                        <a href="{{route('admin.products.index')}}">لیست محصولات   </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{route('admin.products.create')}}">اضافه کردن محصول</a>
+                                    </li>
+                                </ul>
                                     <!-- /.nav-second-level -->
                                 </li>
                                 <li>
-                                <a href="{{route('admin.users.index')}}"><i class="fa fa-table fa-fw"></i> مدیریت کاربران</a>
-                                </li>
-                                <li>
-                                    <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                                </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                                <a href="{{route('admin.users.index')}}"><i class="fa fa-table fa-fw"></i> مدیریت کاربران<span class="fa arrow"></a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a href="panels-wells.html">Panels and Wells</a>
+                                            <a href="{{route('admin.users.index')}}">لیست کاربران   </a>
                                         </li>
                                         <li>
-                                            <a href="buttons.html">Buttons</a>
-                                        </li>
-                                        <li>
-                                            <a href="notifications.html">Notifications</a>
-                                        </li>
-                                        <li>
-                                            <a href="typography.html">Typography</a>
-                                        </li>
-                                        <li>
-                                            <a href="grid.html">Grid</a>
+                                            <a href="{{route('admin.users.create')}}">اضافه   کاربران</a>
                                         </li>
                                     </ul>
+                                </li>
+                                <li>
+                                    <a href="{{route('admin.categorys.index')}}"><i class="fa fa-edit fa-fw"></i> مدیریت دسته بندی ها<span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li>
+                                            <a href="{{route('admin.categorys.index')}}">لیست دسته بندی ها </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{route('admin.categorys.create')}}">اضافه کردن دسته بندی</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-wrench fa-fw"></i> مدیریت اسلایدر <span class="fa arrow"></span></a>
+
                                     <!-- /.nav-second-level -->
                                 </li>
                                 <li>
-                                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                                    <a href="#"><i class="fa fa-sitemap fa-fw"></i> گزارشات<span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li>
                                             <a href="#">Second Level Item</a>
@@ -308,19 +308,7 @@
                                     </ul>
                                     <!-- /.nav-second-level -->
                                 </li>
-                                <li>
-                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                                    <ul class="nav nav-second-level">
-                                        <li>
-                                            <a href="blank.html">Blank Page</a>
-                                        </li>
-                                        <li>
-                                            <a href="login.html">Login Page</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-second-level -->
-                                </li>
-                            </ul>
+                                </ul>
                         </div>
                         <!-- /.sidebar-collapse -->
                     </div>

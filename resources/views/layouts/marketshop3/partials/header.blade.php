@@ -198,9 +198,12 @@
             <li class="dropdown"><a>خرید بر اساس دسته بندی</a>
               <div class="dropdown-menu">
                 <ul>
-                  <li> <a href="category.html">البسه<span>&rsaquo;</span></a>
-                    <div class="dropdown-menu">
-                      <ul>
+                 
+                    @foreach ($Category as $item)
+                    <li><a href="category.html">{{$item->name}} <span>&rsaquo;</span></a></li>
+                    @endforeach
+                    {{--
+
                         <li><a href="category.html">آقایان <span>&rsaquo;</span></a>
                           <div class="dropdown-menu">
                             <ul>
@@ -421,7 +424,7 @@
                         <li><a href="category.html">شکلات</a></li>
                       </ul>
                     </div>
-                  </li>
+                  </li>--}}
                 </ul>
               </div>
             </li>

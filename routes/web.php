@@ -12,10 +12,32 @@ use App\Roles;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
+// Route::get('/user/roles/attach', function () {
+
+//     $user= User::find(2);
+//     $role= Roles::find(2);
+//         $user->Roles()->attach($role->id,['created_at'=>'2020-02-05 00:00:00']);
+
+//  });
+
+// //read role with user
+// Route::get('/user/{id}/roleread', function ($id) {
+//     $user=User::findOrFail($id);
+
+//     foreach($user->roles as $role){
+//         echo $role->name."<br>";
+//     }
 // });
 
+/*
+|--------------------------------------------------------------------------
+|Start  FrontEnd
+|--------------------------------------------------------------------------
+|
+| These Are User Interface  Routes
+|
+|
+*/
 Route::get('/homepagesite',array('as'=>'homepage',function(){
 
     $url= route('homepage');
@@ -26,44 +48,36 @@ Route::get('/homepagesite',array('as'=>'homepage',function(){
     // echo "sorry";
 }));
 
-    // Route::get('alluserdatatabels', 'Admin\UserController@alluserdatatabels')->name('users.alluserdatatabels');
-    // Route::resource('/admin/users', 'Admin\UserController');
-
-
-
-// Route::get('/homesite',array('as'=>'homesitename',function(){
-
-//     $url=Route('homesitename');
-//     return "<a href='$url'>test url link</a>";
-// }));
-
-
-
-
-
-// Route::get('/homepage',array('as'=>'admintest'),function(){
-//              return "test";
-// });
-
-Route::get('/user/roles/attach', function () {
-
-    $user= User::find(2);
-    $role= Roles::find(2);
-        $user->Roles()->attach($role->id,['created_at'=>'2020-02-05 00:00:00']);
-
- });
-
-//read role with user
-Route::get('/user/{id}/roleread', function ($id) {
-    $user=User::findOrFail($id);
-
-    foreach($user->roles as $role){
-        echo $role->name."<br>";
-    }
-});
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
-//==============================================Admin start ========================
+Route::get('/home', 'HomeController@index');
+
+
+/*
+|--------------------------------------------------------------------------
+|End  FrontEnd
+|--------------------------------------------------------------------------
+|
+| These Are User Interface  Routes
+|
+|
+*/
+
+
+
+
+/*
+|--------------------------------------------------------------------------
+|Start  Backend
+|--------------------------------------------------------------------------
+|
+| These Are Admin Routes
+|
+|
+*/
+
+
+///==============================================Admin start ========================
 
 Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
 
@@ -72,11 +86,19 @@ Route::namespace('Admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('alluserdatatabels', 'UserController@alluserdatatabels')->name('users.alluserdatatabels');
     Route::resource('/users', 'UserController');
     Route::resource('/products', 'ProductController');
+    Route::resource('/categorys', 'CategorysController');
 
  });
 
  //==============================================Admin End==========================
+//////\\\\\\\\\\\\\\\\\\\\\\\\\\\\\END BACKEND\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+/*
+|--------------------------------------------------------------------------
+|End  Backend
+|--------------------------------------------------------------------------
+|
+|  These Are Admin Routes
+|
+|
+*/
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

@@ -7,10 +7,11 @@
 <title>SB Admin 2 - Bootstrap Admin Theme</title>
 
 <!-- Bootstrap Core CSS -->
-<link href="css/rtl/bootstrap.min.css" rel="stylesheet">
+<link href="{{asset('admin/css/rtl/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('admin/css/newform.css')}}" rel="stylesheet">
 
 <!-- not use this in ltr -->
-<link href="css/rtl/bootstrap.rtl.css" rel="stylesheet">
+<link href="{{asset('admin/css/rtl/bootstrap.rtl.css')}}" rel="stylesheet">
 
 <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
 
@@ -18,19 +19,19 @@
 
 
 <!-- MetisMenu CSS -->
-<link href="css/plugins/metisMenu/metisMenu.min.css" rel="stylesheet">
+<link href="{{asset('admin/css/plugins/metisMenu/metisMenu.min.css')}}" rel="stylesheet">
 
 <!-- Timeline CSS -->
-<link href="css/plugins/timeline.css" rel="stylesheet">
+<link href="{{asset('admin/css/plugins/timeline.css')}}" rel="stylesheet">
 
 <!-- Custom CSS -->
-<link href="css/rtl/sb-admin-2.css" rel="stylesheet">
+<link href="{{asset('admin/css/rtl/sb-admin-2.css')}}" rel="stylesheet">
 
 <!-- Morris Charts CSS -->
-<link href="css/plugins/morris.css" rel="stylesheet">
+<link href="{{asset('admin/css/plugins/morris.css')}}" rel="stylesheet">
 
 <!-- Custom Fonts -->
-<link href="css/font-awesome/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="{{asset('admin/css/font-awesome/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
