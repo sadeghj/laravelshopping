@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 06, 2020 at 04:23 AM
+-- Generation Time: Mar 12, 2020 at 02:28 PM
 -- Server version: 5.7.29-0ubuntu0.18.04.1
 -- PHP Version: 7.2.24-0ubuntu0.18.04.3
 
@@ -47,13 +47,24 @@ CREATE TABLE `avatar_pivot` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Table structure for table `categorys`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `categorys` (
   `id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL
+  `name` varchar(100) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `categorys`
+--
+
+INSERT INTO `categorys` (`id`, `name`, `created_at`, `updated_at`) VALUES
+(1, 'لباس', '2020-03-12 06:47:37', '2020-03-12 06:47:37'),
+(2, 'کیف', '2020-03-12 07:00:14', '2020-03-12 07:00:14'),
+(3, 'کفش', '2020-03-12 10:07:04', '2020-03-12 10:07:04');
 
 -- --------------------------------------------------------
 
@@ -102,6 +113,19 @@ CREATE TABLE `faktors` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `heder_attributes`
+--
+
+CREATE TABLE `heder_attributes` (
+  `id` int(11) NOT NULL,
+  `header` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -116,9 +140,27 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1);
+(26, '2020_03_12_120819_create_avatar_table', 0),
+(27, '2020_03_12_120819_create_avatar_pivot_table', 0),
+(28, '2020_03_12_120819_create_categorys_table', 0),
+(29, '2020_03_12_120819_create_comments_table', 0),
+(30, '2020_03_12_120819_create_failed_jobs_table', 0),
+(31, '2020_03_12_120819_create_faktors_table', 0),
+(32, '2020_03_12_120819_create_password_resets_table', 0),
+(33, '2020_03_12_120819_create_product_faktors_table', 0),
+(34, '2020_03_12_120819_create_products_table', 0),
+(35, '2020_03_12_120819_create_roles_table', 0),
+(36, '2020_03_12_120819_create_roles_user_table', 0),
+(37, '2020_03_12_120819_create_subcategorys_table', 0),
+(38, '2020_03_12_120819_create_transactions_table', 0),
+(39, '2020_03_12_120819_create_users_table', 0),
+(40, '2020_03_12_120821_add_foreign_keys_to_avatar_table', 0),
+(41, '2020_03_12_120821_add_foreign_keys_to_avatar_pivot_table', 0),
+(42, '2020_03_12_120821_add_foreign_keys_to_comments_table', 0),
+(43, '2020_03_12_120821_add_foreign_keys_to_product_faktors_table', 0),
+(44, '2020_03_12_120821_add_foreign_keys_to_roles_user_table', 0),
+(45, '2020_03_12_120821_add_foreign_keys_to_subcategorys_table', 0),
+(46, '2020_03_12_120821_add_foreign_keys_to_transactions_table', 0);
 
 -- --------------------------------------------------------
 
@@ -161,13 +203,80 @@ CREATE TABLE `product_faktors` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `subcategory`
+-- Table structure for table `roles`
 --
 
-CREATE TABLE `subcategory` (
+CREATE TABLE `roles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `discription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `discription`, `created_at`, `updated_at`) VALUES
+(1, 'Administrator', 'Administartor admin in my website', '2020-03-05 20:30:00', '2020-03-05 20:30:00'),
+(2, 'user', 'normal', '2020-03-05 20:30:00', '2020-03-05 20:30:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles_user`
+--
+
+CREATE TABLE `roles_user` (
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `roles_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles_user`
+--
+
+INSERT INTO `roles_user` (`user_id`, `roles_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2020-02-05 00:00:00', NULL),
+(2, 2, '2020-02-05 00:00:00', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategorys`
+--
+
+CREATE TABLE `subcategorys` (
   `id` int(11) NOT NULL,
   `name` varchar(100) DEFAULT NULL,
-  `categoryid` int(11) NOT NULL
+  `category_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `subcategorys_attributes`
+--
+
+CREATE TABLE `subcategorys_attributes` (
+  `subcategory_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sub_attributs`
+--
+
+CREATE TABLE `sub_attributs` (
+  `sub_id` int(11) DEFAULT NULL,
+  `atr_id` int(11) DEFAULT NULL,
+  `discription` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -208,7 +317,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `username`, `phone`) VALUES
-(1, 'صادق', 'sshartmann@protonmail.com', NULL, '$2y$10$wbI9zVt0ffwSV8QKQr5L8uCES3fviw9/1H7r.LlRrKEszrzm1oLS6', NULL, '2020-02-15 11:33:24', '2020-02-15 11:33:24', NULL, NULL);
+(1, 'صادق', 'sshartmann@protonmail.com', NULL, '$2y$10$wbI9zVt0ffwSV8QKQr5L8uCES3fviw9/1H7r.LlRrKEszrzm1oLS6', NULL, '2020-02-15 11:33:24', '2020-02-15 11:33:24', NULL, NULL),
+(2, 'علی', 'ali@chmail.com', NULL, '$2y$10$vG.HKAvMsTdOZ7dlVbCyJuXopuRShy4tbgznW6DojMlXySrIlPZJi', NULL, '2020-03-06 02:25:03', '2020-03-06 02:25:03', NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -228,9 +338,9 @@ ALTER TABLE `avatar_pivot`
   ADD KEY `fk_avatar_pivot_users` (`avatarable_id`);
 
 --
--- Indexes for table `category`
+-- Indexes for table `categorys`
 --
-ALTER TABLE `category`
+ALTER TABLE `categorys`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -253,6 +363,12 @@ ALTER TABLE `failed_jobs`
 ALTER TABLE `faktors`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `unq_faktors_idfakrots` (`idfakrots`);
+
+--
+-- Indexes for table `heder_attributes`
+--
+ALTER TABLE `heder_attributes`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -281,11 +397,31 @@ ALTER TABLE `product_faktors`
   ADD KEY `fk_product_faktors_products_0` (`idproducts`);
 
 --
--- Indexes for table `subcategory`
+-- Indexes for table `roles`
 --
-ALTER TABLE `subcategory`
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `roles_user`
+--
+ALTER TABLE `roles_user`
+  ADD KEY `fk_roles_users_roles` (`roles_id`),
+  ADD KEY `fk_roles_users_users` (`user_id`);
+
+--
+-- Indexes for table `subcategorys`
+--
+ALTER TABLE `subcategorys`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_subcategory_category` (`categoryid`);
+  ADD KEY `fk_subcategory_category` (`category_id`);
+
+--
+-- Indexes for table `sub_attributs`
+--
+ALTER TABLE `sub_attributs`
+  ADD KEY `fk_sub_attributs_attributes` (`atr_id`),
+  ADD KEY `idx_sub_attributs` (`sub_id`,`atr_id`);
 
 --
 -- Indexes for table `transactions`
@@ -306,10 +442,10 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT for table `categorys`
 --
-ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `categorys`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `comments`
 --
@@ -326,14 +462,24 @@ ALTER TABLE `failed_jobs`
 ALTER TABLE `faktors`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `heder_attributes`
+--
+ALTER TABLE `heder_attributes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 --
--- AUTO_INCREMENT for table `subcategory`
+-- AUTO_INCREMENT for table `roles`
 --
-ALTER TABLE `subcategory`
+ALTER TABLE `roles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `subcategorys`
+--
+ALTER TABLE `subcategorys`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `transactions`
@@ -344,7 +490,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- Constraints for dumped tables
 --
@@ -377,10 +523,24 @@ ALTER TABLE `product_faktors`
   ADD CONSTRAINT `fk_product_faktors_products_0` FOREIGN KEY (`idproducts`) REFERENCES `products` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Constraints for table `subcategory`
+-- Constraints for table `roles_user`
 --
-ALTER TABLE `subcategory`
-  ADD CONSTRAINT `fk_subcategory_category` FOREIGN KEY (`categoryid`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `roles_user`
+  ADD CONSTRAINT `fk_roles_users_roles` FOREIGN KEY (`roles_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_roles_users_users` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `subcategorys`
+--
+ALTER TABLE `subcategorys`
+  ADD CONSTRAINT `fk_subcategory_category` FOREIGN KEY (`category_id`) REFERENCES `categorys` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `sub_attributs`
+--
+ALTER TABLE `sub_attributs`
+  ADD CONSTRAINT `fk_sub_attributs_attributes` FOREIGN KEY (`atr_id`) REFERENCES `heder_attributes` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_sub_attributs_subcategorys` FOREIGN KEY (`sub_id`) REFERENCES `subcategorys` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `transactions`
